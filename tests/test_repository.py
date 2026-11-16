@@ -2,14 +2,32 @@
 import sys
 import tempfile
 import unittest
+import json
+import hashlib
+import zipfile
 from pathlib import Path
 
 sys.path.insert(0,str(Path(__file__).resolve().parent.parent/"scripts"))
 from repository import META,SKILLS,assemble,inventory,validate_links
 from install_local import install
+from build_release import build
 
 
 class RepositoryTests(unittest.TestCase):
+    def test_release_contains_full_and_platform_packages(self):
+        with tempfile.TemporaryDirectory() as temp:
+            result=build(Path(temp)/"release")
+            self.assertEqual(len(result),3)
+            lite=next(item for item in result if "platform-lite" in item["file"])
+            path=Path(temp)/"release"/lite["file"]
+            self.assertLess(path.stat().st_size,10_000_000)
+            self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),lite["sha256"])
+            with zipfile.ZipFile(path) as archive:
+                self.assertIn("SKILL.md",archive.namelist())
+                self.assertIsNone(archive.testzip())
+            sums=(path.parent/"SHA256SUMS.txt").read_text(encoding="ascii")
+            self.assertIn(lite["sha256"],sums)
+
     def test_main_is_self_contained_and_source_is_single_copy(self):
         with tempfile.TemporaryDirectory() as temp:
             result=assemble("photo-story-magazine",Path(temp)/"main")

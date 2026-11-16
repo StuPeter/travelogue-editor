@@ -6,6 +6,7 @@ import tempfile
 import zipfile
 from pathlib import Path
 from repository import ROOT,META,assemble,inventory,sha
+from build_platform_package import build as build_platform
 
 
 def archive(source,target):
@@ -28,9 +29,10 @@ def build(output):
     output=Path(output).resolve(); output.mkdir(parents=True,exist_ok=True)
     bundle=output/f'travelogue-editor-v{META["version"]}.zip'
     cover_zip=output/f'photo-magazine-cover-v{META["skills"]["photo-magazine-cover"]}.zip'
+    lite_zip=output/f'travelogue-editor-platform-lite-v{META["version"]}.zip'
     manifest_path=output/f'release-v{META["version"]}.json'
     checksums=output/"SHA256SUMS.txt"
-    if any(p.exists() for p in (bundle,cover_zip,manifest_path,checksums)):
+    if any(p.exists() for p in (bundle,cover_zip,lite_zip,manifest_path,checksums)):
         raise ValueError("Use a new output directory; existing releases are preserved")
     with tempfile.TemporaryDirectory(prefix="travelogue-release-") as temp:
         stage=Path(temp)/"bundle"; stage.mkdir()
@@ -50,6 +52,8 @@ def build(output):
         cover_stage=Path(temp)/"cover"; cover_stage.mkdir()
         assemble("photo-magazine-cover",cover_stage/"photo-magazine-cover")
         results=[archive(stage,bundle),archive(cover_stage,cover_zip)]
+        build_platform(lite_zip)
+        results.append({"file":lite_zip.name,"bytes":lite_zip.stat().st_size,"sha256":sha(lite_zip)})
     manifest_path.write_text(json.dumps({"project":META,"archives":results},ensure_ascii=False,indent=2),encoding="utf-8")
     checksums.write_text("".join(f'{r["sha256"]}  {r["file"]}\n' for r in results),encoding="ascii")
     return results

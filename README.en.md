@@ -17,7 +17,9 @@ Skill instructions and detailed references are primarily in Chinese. Sample publ
 
 ## Install
 
-Download a self-contained bundle from [Releases](https://github.com/StuPeter/travelogue-editor/releases), or clone the repository and run:
+Download a full bundle or the platform-lite ZIP from [Releases](https://github.com/StuPeter/travelogue-editor/releases), or clone the repository and run:
+
+The full bundle includes font sources. The platform-lite ZIP contains `SKILL.md` at its root and is built under 10 MB; it downloads and verifies the pinned approximately 48 MB font-source release on first font preparation, then caches the fonts. A standalone cover package is also available.
 
 ```sh
 python scripts/install_local.py

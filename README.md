@@ -29,7 +29,15 @@
 
 ### 方式一：下载已打包的 Skill
 
-从 [Releases](https://github.com/StuPeter/travelogue-editor/releases) 下载 `travelogue-editor-v*.zip`，解压后将两个 Skill 目录放入助手使用的 Skill 目录。
+从 [Releases](https://github.com/StuPeter/travelogue-editor/releases) 选择适合的版本：
+
+| 文件 | 适用场景 |
+|---|---|
+| `travelogue-editor-v*.zip` | 完整版：包含字体源与两个 Skill，解压后安装 Skill 目录 |
+| `travelogue-editor-platform-lite-v*.zip` | 平台轻量版：ZIP 根目录含 `SKILL.md`，适合压缩包 10 MB 以内的平台 |
+| `photo-magazine-cover-v*.zip` | 单独使用封面 Skill |
+
+轻量版首次准备字体时需要联网下载并校验约48 MB的固定版本发布包，之后复用缓存；图像生成工具由运行环境提供。完整版本内含字体源。
 
 | Skill ID | 用途 |
 |---|---|

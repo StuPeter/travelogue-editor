@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add a platform-lite archive under 10 MB alongside the full and standalone-cover packages. The lite package verifies and caches font sources on first use.
+
 ## 2.1.0 — 2026-11-16
 
 First public repository release as **旅图编辑 · Travelogue Editor**.
