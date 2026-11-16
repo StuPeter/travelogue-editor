@@ -1,0 +1,4 @@
+interface:
+  display_name: "旅图编辑 · Travelogue Editor"
+  short_description: "用可复用排版工具和默认字体，将本地照片策划为有故事与图解的原创杂志"
+  default_prompt: "使用 $photo-story-magazine，将本地照片策划为纪实摄影杂志，先给我设计方案、封面与代表跨页样张。"

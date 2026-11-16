@@ -1,0 +1,18 @@
+{
+  "id": "editorial-photography-v1",
+  "purpose": "摄影杂志封面默认艺术指导；用户指定优先。",
+  "medium": "Immersive editorial photography or explicitly identified photorealistic concept artwork; tactile detail, credible light and spatial depth.",
+  "identity": "A designed original masthead, a distinct short topic headline and one primary visual focus. The publication name belongs to THIS issue, never inherited from a sample.",
+  "type": "For Chinese geography/culture begin by testing substantial Song/Mincho serif display lettering, deliberate stroke contrast and optical spacing. A subject-led bold sans is allowed. Interior font roles do not automatically define the cover.",
+  "layering": "Image shapes, title and genuine foreground form a deliberate relationship. Occlusion is optional, supported by a real/illustrated contour, and keeps all characters recognizable.",
+  "frame": "Respect a requested continuous frame/color; otherwise select from this issue. Golden sample frames are not universal.",
+  "composition": "Subject scale, crop, distinct planes and eye path must be deliberate. Derive headline placement from the image.",
+  "avoid": [
+    "Flat geometric placeholders as photographic art direction",
+    "Detached title cards as the default cover",
+    "Copying sample masthead, green panel, mountain polygons or title positions",
+    "Automatic decorative English, fake barcode or issue number",
+    "Arbitrary polygons presented as extracted photographic contours",
+    "Plastic HDR texture, uniform oversharpening, unrelated cinematic props"
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "name": "fieldkit-default-1",
+  "fonts": {
+    "serif": {
+      "source": "fonts/SourceHanSerifCN-VF.ttf",
+      "license": "fonts/SourceHanSerif-LICENSE.txt",
+      "sha256": "8e052cbcdbd0f03496c9ad05da7d57901549286d5efd30f3caf66a393f6c389b",
+      "family": "Source Han Serif CN",
+      "axes": {
+        "wght": 400
+      }
+    },
+    "serif_semibold": {
+      "source": "fonts/SourceHanSerifCN-VF.ttf",
+      "license": "fonts/SourceHanSerif-LICENSE.txt",
+      "sha256": "8e052cbcdbd0f03496c9ad05da7d57901549286d5efd30f3caf66a393f6c389b",
+      "family": "Source Han Serif CN",
+      "axes": {
+        "wght": 600
+      }
+    },
+    "sans_medium": {
+      "source": "fonts/NotoSansSC-VF.ttf",
+      "license": "fonts/NotoSansSC-OFL.txt",
+      "sha256": "763146584cf0710223441356b4395e279021b0806c196614377a7a0174ae074a",
+      "family": "Noto Sans SC",
+      "axes": {
+        "wght": 500
+      }
+    },
+    "sans_heavy": {
+      "source": "fonts/NotoSansSC-VF.ttf",
+      "license": "fonts/NotoSansSC-OFL.txt",
+      "sha256": "763146584cf0710223441356b4395e279021b0806c196614377a7a0174ae074a",
+      "family": "Noto Sans SC",
+      "axes": {
+        "wght": 800
+      }
+    },
+    "narrow": {
+      "source": "fonts/RobotoCondensed-VF.ttf",
+      "license": "fonts/RobotoCondensed-OFL.txt",
+      "sha256": "dace262afcee68a5276f200d8026c57221735c0118ab5fda8c2c0d3dc409a8d0",
+      "family": "Roboto Condensed",
+      "axes": {
+        "wght": 400
+      }
+    }
+  },
+  "roles": {
+    "display": {
+      "font": "sans_heavy",
+      "weight": 800,
+      "size": 46,
+      "leading": 53
+    },
+    "title": {
+      "font": "serif_semibold",
+      "weight": 600,
+      "size": 26,
+      "leading": 34
+    },
+    "body": {
+      "font": "serif",
+      "weight": 400,
+      "size": 10.5,
+      "leading": 18
+    },
+    "caption": {
+      "font": "sans_medium",
+      "weight": 500,
+      "size": 8,
+      "leading": 12
+    },
+    "label": {
+      "font": "sans_medium",
+      "weight": 500,
+      "size": 11,
+      "leading": 16
+    },
+    "number": {
+      "font": "narrow",
+      "weight": 400,
+      "size": 44,
+      "leading": 48
+    },
+    "latin": {
+      "font": "narrow",
+      "weight": 400,
+      "size": 10,
+      "leading": 13
+    }
+  }
+}

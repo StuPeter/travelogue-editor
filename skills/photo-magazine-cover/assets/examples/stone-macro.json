@@ -1,0 +1,94 @@
+{
+  "schema_version": 2,
+  "publication": "行见",
+  "mode": "original-illustration",
+  "inputs": [],
+  "aspect_ratio": [
+    3,
+    4
+  ],
+  "frame": {
+    "width_ratio": 0.028,
+    "color": "#efc52e",
+    "treatment": "Continuous even flat golden-yellow frame, no bevel or shadow"
+  },
+  "factual_anchors": [
+    "This is an original imaginary editorial concept, not a named real location or an archival photograph",
+    "Only the scene and exact text specified for this example"
+  ],
+  "allowed_changes": [
+    "Compose the new original scene and adjust crop/light to achieve the specified cover",
+    "Optically refine text within its designated zone while retaining exact characters"
+  ],
+  "forbidden_changes": [
+    "Recognizable famous landmarks or named real buildings",
+    "People, vehicles, flags or animals unless explicitly requested",
+    "Extra text, fake captions, barcodes, dates, numbers, logos",
+    "Detached rectangular title panels or decorative geometric mountains"
+  ],
+  "review_checks": [
+    "One immediate visual focus at 200px wide",
+    "Exact Chinese characters and intended line order",
+    "Source image retains tangible photographic depth/material",
+    "Masthead and headline have different functions and strong local contrast",
+    "No accidental collision of text and important subject features"
+  ],
+  "topic": "岩石的纹理",
+  "content_promise": "把目光集中到岩石层理和表面的变化，示范单一物件与摄影微距。",
+  "direction": {
+    "route": "material-macro",
+    "why_this_image": "One rounded dark stone and its naturally exposed layered face supply form, texture and a readable contour.",
+    "rejected_route": "wide landscape with many small stones",
+    "why_rejected": "At thumbnail size neither the tactile subject nor the editorial focus would survive."
+  },
+  "art_direction": {
+    "subject": "A single dark slate-like river-worn stone with a revealed striated edge on a pale mineral surface, original conceptual still-life photography, no fossil or artifact claims.",
+    "camera": "Close macro still-life, low three-quarter viewpoint, 85mm equivalent, physically credible depth of field; main face in focus.",
+    "subject_scale": "One stone occupies central/lower 65% of image width; naturally pale upper surface leaves masthead space.",
+    "foreground": "Pale fine-grained mineral surface entering bottom edge with modest scattered grains only.",
+    "middle_ground": "Dark rounded stone dominates from center left to right, cut edge showing delicate lamination and tiny light-catching chips.",
+    "background": "Quiet pale grey mineral surface extending upward, natural continuous photographic background, not a graphic paper card.",
+    "eye_path": "Dark masthead at top -> raking highlight along rock edge -> large ivory title across lower dark stone face.",
+    "light": "One soft low grazing side light, rich but open shadow, subtle reflected fill.",
+    "palette": "Charcoal slate, warm limestone grey, ivory lettering, muted gold frame; minimal saturation.",
+    "texture": "Extremely tangible photographic mineral grain and lamination, sharp without artificial crunch, no painted or plastic surface."
+  },
+  "text": [
+    {
+      "role": "masthead",
+      "content": "行见",
+      "lines": [
+        "行见"
+      ],
+      "box": [
+        0.14,
+        0.055,
+        0.72,
+        0.18
+      ],
+      "font_character": "Large distinctive Chinese Song/Mincho serif, confident broad strokes, fine stroke contrast, optically spaced; original masthead occupies roughly two thirds of width.",
+      "contrast_plan": "Deep charcoal masthead on calm light-grey mineral surface.",
+      "occlusion": {
+        "enabled": false
+      }
+    },
+    {
+      "role": "headline",
+      "content": "石上时间",
+      "lines": [
+        "石上时间"
+      ],
+      "box": [
+        0.12,
+        0.68,
+        0.76,
+        0.15
+      ],
+      "font_character": "One wide line of strong ivory Chinese Song serif; retain full glyph widths, fewer words with very large scale.",
+      "contrast_plan": "Reserve the lower continuous dark stone face beneath every character, including the thinnest strokes.",
+      "occlusion": {
+        "enabled": false
+      }
+    }
+  ]
+}

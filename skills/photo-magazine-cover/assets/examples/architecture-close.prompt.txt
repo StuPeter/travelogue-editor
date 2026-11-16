@@ -1,0 +1,46 @@
+Use case: original editorial photography magazine cover, ONE flat finished artwork, NOT a mockup.
+
+Output aspect ratio: 3:4.
+
+Original publication for THIS issue: 行见
+
+Topic: 屋檐与日常建筑
+Editorial promise: 由檐口的形态与木石材质引导读者进入建筑专题，示范斜向形态与局部字场。
+
+Production mode: original-illustration
+
+Art-direction baseline:
+Immersive editorial photography or explicitly identified photorealistic concept artwork; tactile detail, credible light and spatial depth.
+A designed original masthead, a distinct short topic headline and one primary visual focus. The publication name belongs to THIS issue, never inherited from a sample.
+For Chinese geography/culture begin by testing substantial Song/Mincho serif display lettering, deliberate stroke contrast and optical spacing. A subject-led bold sans is allowed. Interior font roles do not automatically define the cover.
+Image shapes, title and genuine foreground form a deliberate relationship. Occlusion is optional, supported by a real/illustrated contour, and keeps all characters recognizable.
+Subject scale, crop, distinct planes and eye path must be deliberate. Derive headline placement from the image.
+
+Image inputs:
+No supplied source photograph. Create original concept artwork; do not imply actual documentary evidence.
+
+Composition choice:
+{"route": "architectural-close-crop", "why_this_image": "A deep roof eave creates a strong diagonal; a quiet warm plaster wall gives the headline a credible photographic surface.", "rejected_route": "symmetrical frontal postcard of an entire temple", "why_rejected": "It would reduce material detail and force both titles into a small sky strip."}
+
+Concrete camera, subject, planes and eye path:
+{"subject": "An original imagined Chinese timber courtyard building, deep tiled overhang, weathered red-brown beams and a pale lime-plaster wall; not any identifiable historic temple.", "camera": "Low oblique close-up, 50mm architectural perspective, look beneath an eave; no extreme wide-angle distortion.", "subject_scale": "Eave and timber fill upper/left 65%; naturally quiet pale wall extends down right for title.", "foreground": "A sharply resolved timber column near left edge, stopping short of masthead.", "middle_ground": "Repeated tile ends and layered eaves run diagonally from upper right toward left middle; visible credible joints.", "background": "Warm pale lime-plaster wall on right/lower area; small shadowed courtyard glimpse, no invented statues.", "eye_path": "Masthead in deep upper shadow -> diagonal roof edge -> red topic on pale wall -> lower timber grain.", "light": "Soft reflected daylight with a narrow warm grazing beam revealing tile and wood texture.", "palette": "Charcoal tile, aged timber red-brown, warm ivory wall, brick-red topic letters; restrained gold frame.", "texture": "Tactile photographic timber grain, subtle chipped plaster and ceramic tile, natural wear, no illustration flattening."}
+
+Frame (width ratio relative to full cover width): {"width_ratio": 0.028, "color": "#efc52e", "treatment": "Continuous even flat golden-yellow frame, no bevel or shadow"}
+
+Preserve anchors: This is an original imaginary editorial concept, not a named real location or an archival photograph; Only the scene and exact text specified for this example
+
+EXACT text with normalized zones [x,y,w,h] measured from top-left of whole cover:
+
+{"role": "masthead", "content": "行见", "lines": ["行见"], "box": [0.1, 0.06, 0.67, 0.17], "font_character": "Substantial white Song serif masthead, optically spaced and visually independent of headline.", "contrast_plan": "Reserve a contiguous deep shadow/wood region behind the entire masthead.", "occlusion": {"enabled": false}}
+
+{"role": "headline", "content": "屋檐之下", "lines": ["屋檐", "之下"], "box": [0.56, 0.55, 0.33, 0.27], "font_character": "Large brick-red Song/Mincho serif with architectural firmness, two carefully aligned lines.", "contrast_plan": "Dark brick-red characters on naturally pale quiet plaster; no separate title card.", "occlusion": {"enabled": false}}
+
+Allowed changes: Compose the new original scene and adjust crop/light to achieve the specified cover; Optically refine text within its designated zone while retaining exact characters
+
+Do not add/change: Recognizable famous landmarks or named real buildings; People, vehicles, flags or animals unless explicitly requested; Extra text, fake captions, barcodes, dates, numbers, logos; Detached rectangular title panels or decorative geometric mountains
+
+Visual acceptance checks: One immediate visual focus at 200px wide; Exact Chinese characters and intended line order; Source image retains tangible photographic depth/material; Masthead and headline have different functions and strong local contrast; No accidental collision of text and important subject features
+
+Avoid: Flat geometric placeholders as photographic art direction; Detached title cards as the default cover; Copying sample masthead, green panel, mountain polygons or title positions; Automatic decorative English, fake barcode or issue number; Arbitrary polygons presented as extracted photographic contours; Plastic HDR texture, uniform oversharpening, unrelated cinematic props
+
+Render ONLY the listed text strings. No extra copy, watermark or official National Geographic masthead/logo. Correct Chinese spelling and recognizable glyphs outrank occlusion.

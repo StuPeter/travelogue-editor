@@ -1,0 +1,97 @@
+{
+  "schema_version": 2,
+  "publication": "行见",
+  "mode": "original-illustration",
+  "inputs": [],
+  "aspect_ratio": [
+    3,
+    4
+  ],
+  "frame": {
+    "width_ratio": 0.028,
+    "color": "#efc52e",
+    "treatment": "Continuous even flat golden-yellow frame, no bevel or shadow"
+  },
+  "factual_anchors": [
+    "This is an original imaginary editorial concept, not a named real location or an archival photograph",
+    "Only the scene and exact text specified for this example"
+  ],
+  "allowed_changes": [
+    "Compose the new original scene and adjust crop/light to achieve the specified cover",
+    "Optically refine text within its designated zone while retaining exact characters"
+  ],
+  "forbidden_changes": [
+    "Recognizable famous landmarks or named real buildings",
+    "People, vehicles, flags or animals unless explicitly requested",
+    "Extra text, fake captions, barcodes, dates, numbers, logos",
+    "Detached rectangular title panels or decorative geometric mountains"
+  ],
+  "review_checks": [
+    "One immediate visual focus at 200px wide",
+    "Exact Chinese characters and intended line order",
+    "Source image retains tangible photographic depth/material",
+    "Masthead and headline have different functions and strong local contrast",
+    "No accidental collision of text and important subject features"
+  ],
+  "topic": "沿河行进的风景",
+  "content_promise": "以河道的转折表现地形和行进关系，示范路径主导的摄影封面。",
+  "direction": {
+    "route": "journey-leading-line",
+    "why_this_image": "A single winding river supplies a real visual route through the scene and leaves the right dark cliff available for type.",
+    "rejected_route": "centered monument with centered headline",
+    "why_rejected": "It would flatten the river's movement and place lettering over its narrow bend."
+  },
+  "art_direction": {
+    "subject": "An imagined great mountain river curving through a lush steep-sided valley; a credible photographic landscape, no famous real place.",
+    "camera": "High oblique viewpoint, 35mm landscape perspective; one river meander guides from lower-left foreground into middle distance.",
+    "subject_scale": "River and valley occupy lower 72%; quiet clear mineral-blue sky occupies upper 28% for masthead.",
+    "foreground": "Textured foliage and dark rock at the lower-right corner; fine natural leaves may overlap only the bottom edge of main headline.",
+    "middle_ground": "Turquoise river bends from lower left to central gap, separated from cliffs and dense forest.",
+    "background": "Layered blue-green ridges fading into haze below quiet sky; no buildings.",
+    "eye_path": "Masthead -> bright river bend -> serif headline on the right dark cliff -> receding mountain gap.",
+    "light": "Directional early daylight, clear shadows, believable aerial perspective.",
+    "palette": "Jade and deep forest green, turquoise river, mineral blue sky, warm ivory letters, golden outer frame.",
+    "texture": "Photorealistic documentary-quality vegetation, irregular rocks, water detail, restrained fine film grain, no plastic HDR."
+  },
+  "text": [
+    {
+      "role": "masthead",
+      "content": "行见",
+      "lines": [
+        "行见"
+      ],
+      "box": [
+        0.14,
+        0.055,
+        0.72,
+        0.18
+      ],
+      "font_character": "Large distinctive Chinese Song/Mincho serif, confident broad strokes, fine stroke contrast, optically spaced; original masthead occupies roughly two thirds of width.",
+      "contrast_plan": "White lettering against calm blue sky; cloud texture stays away from fine strokes.",
+      "occlusion": {
+        "enabled": false
+      }
+    },
+    {
+      "role": "headline",
+      "content": "河流的方向",
+      "lines": [
+        "河流的",
+        "方向"
+      ],
+      "box": [
+        0.54,
+        0.56,
+        0.38,
+        0.28
+      ],
+      "font_character": "Very large warm-ivory Song serif display, firm strokes and slightly condensed line composition without distorting characters.",
+      "contrast_plan": "Set over dark right-hand cliff/forest, not the bright river.",
+      "occlusion": {
+        "enabled": true,
+        "foreground": "A few genuine-looking foreground leaves at the lowest title edges only",
+        "protected_features": "All radicals, inner counters and reading order must remain recognizable"
+      }
+    }
+  ]
+}

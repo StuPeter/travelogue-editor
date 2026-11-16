@@ -1,0 +1,4 @@
+interface:
+  display_name: "旅图编辑 · 杂志封面"
+  short_description: "为摄影杂志设计图文融合、层级清晰且具有吸引力的原创封面"
+  default_prompt: "使用 $photo-magazine-cover，按照已确认的主题与素材制作杂志封面。"

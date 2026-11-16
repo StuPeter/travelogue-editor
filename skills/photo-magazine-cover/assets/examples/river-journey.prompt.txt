@@ -1,0 +1,46 @@
+Use case: original editorial photography magazine cover, ONE flat finished artwork, NOT a mockup.
+
+Output aspect ratio: 3:4.
+
+Original publication for THIS issue: 行见
+
+Topic: 沿河行进的风景
+Editorial promise: 以河道的转折表现地形和行进关系，示范路径主导的摄影封面。
+
+Production mode: original-illustration
+
+Art-direction baseline:
+Immersive editorial photography or explicitly identified photorealistic concept artwork; tactile detail, credible light and spatial depth.
+A designed original masthead, a distinct short topic headline and one primary visual focus. The publication name belongs to THIS issue, never inherited from a sample.
+For Chinese geography/culture begin by testing substantial Song/Mincho serif display lettering, deliberate stroke contrast and optical spacing. A subject-led bold sans is allowed. Interior font roles do not automatically define the cover.
+Image shapes, title and genuine foreground form a deliberate relationship. Occlusion is optional, supported by a real/illustrated contour, and keeps all characters recognizable.
+Subject scale, crop, distinct planes and eye path must be deliberate. Derive headline placement from the image.
+
+Image inputs:
+No supplied source photograph. Create original concept artwork; do not imply actual documentary evidence.
+
+Composition choice:
+{"route": "journey-leading-line", "why_this_image": "A single winding river supplies a real visual route through the scene and leaves the right dark cliff available for type.", "rejected_route": "centered monument with centered headline", "why_rejected": "It would flatten the river's movement and place lettering over its narrow bend."}
+
+Concrete camera, subject, planes and eye path:
+{"subject": "An imagined great mountain river curving through a lush steep-sided valley; a credible photographic landscape, no famous real place.", "camera": "High oblique viewpoint, 35mm landscape perspective; one river meander guides from lower-left foreground into middle distance.", "subject_scale": "River and valley occupy lower 72%; quiet clear mineral-blue sky occupies upper 28% for masthead.", "foreground": "Textured foliage and dark rock at the lower-right corner; fine natural leaves may overlap only the bottom edge of main headline.", "middle_ground": "Turquoise river bends from lower left to central gap, separated from cliffs and dense forest.", "background": "Layered blue-green ridges fading into haze below quiet sky; no buildings.", "eye_path": "Masthead -> bright river bend -> serif headline on the right dark cliff -> receding mountain gap.", "light": "Directional early daylight, clear shadows, believable aerial perspective.", "palette": "Jade and deep forest green, turquoise river, mineral blue sky, warm ivory letters, golden outer frame.", "texture": "Photorealistic documentary-quality vegetation, irregular rocks, water detail, restrained fine film grain, no plastic HDR."}
+
+Frame (width ratio relative to full cover width): {"width_ratio": 0.028, "color": "#efc52e", "treatment": "Continuous even flat golden-yellow frame, no bevel or shadow"}
+
+Preserve anchors: This is an original imaginary editorial concept, not a named real location or an archival photograph; Only the scene and exact text specified for this example
+
+EXACT text with normalized zones [x,y,w,h] measured from top-left of whole cover:
+
+{"role": "masthead", "content": "行见", "lines": ["行见"], "box": [0.14, 0.055, 0.72, 0.18], "font_character": "Large distinctive Chinese Song/Mincho serif, confident broad strokes, fine stroke contrast, optically spaced; original masthead occupies roughly two thirds of width.", "contrast_plan": "White lettering against calm blue sky; cloud texture stays away from fine strokes.", "occlusion": {"enabled": false}}
+
+{"role": "headline", "content": "河流的方向", "lines": ["河流的", "方向"], "box": [0.54, 0.56, 0.38, 0.28], "font_character": "Very large warm-ivory Song serif display, firm strokes and slightly condensed line composition without distorting characters.", "contrast_plan": "Set over dark right-hand cliff/forest, not the bright river.", "occlusion": {"enabled": true, "foreground": "A few genuine-looking foreground leaves at the lowest title edges only", "protected_features": "All radicals, inner counters and reading order must remain recognizable"}}
+
+Allowed changes: Compose the new original scene and adjust crop/light to achieve the specified cover; Optically refine text within its designated zone while retaining exact characters
+
+Do not add/change: Recognizable famous landmarks or named real buildings; People, vehicles, flags or animals unless explicitly requested; Extra text, fake captions, barcodes, dates, numbers, logos; Detached rectangular title panels or decorative geometric mountains
+
+Visual acceptance checks: One immediate visual focus at 200px wide; Exact Chinese characters and intended line order; Source image retains tangible photographic depth/material; Masthead and headline have different functions and strong local contrast; No accidental collision of text and important subject features
+
+Avoid: Flat geometric placeholders as photographic art direction; Detached title cards as the default cover; Copying sample masthead, green panel, mountain polygons or title positions; Automatic decorative English, fake barcode or issue number; Arbitrary polygons presented as extracted photographic contours; Plastic HDR texture, uniform oversharpening, unrelated cinematic props
+
+Render ONLY the listed text strings. No extra copy, watermark or official National Geographic masthead/logo. Correct Chinese spelling and recognizable glyphs outrank occlusion.

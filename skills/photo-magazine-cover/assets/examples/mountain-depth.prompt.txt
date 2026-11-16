@@ -1,0 +1,46 @@
+Use case: original editorial photography magazine cover, ONE flat finished artwork, NOT a mockup.
+
+Output aspect ratio: 3:4.
+
+Original publication for THIS issue: 行见
+
+Topic: 山岳的尺度
+Editorial promise: 以峰体和前后山脊的关系呈现尺度，示范纵深与克制的侧置标题。
+
+Production mode: original-illustration
+
+Art-direction baseline:
+Immersive editorial photography or explicitly identified photorealistic concept artwork; tactile detail, credible light and spatial depth.
+A designed original masthead, a distinct short topic headline and one primary visual focus. The publication name belongs to THIS issue, never inherited from a sample.
+For Chinese geography/culture begin by testing substantial Song/Mincho serif display lettering, deliberate stroke contrast and optical spacing. A subject-led bold sans is allowed. Interior font roles do not automatically define the cover.
+Image shapes, title and genuine foreground form a deliberate relationship. Occlusion is optional, supported by a real/illustrated contour, and keeps all characters recognizable.
+Subject scale, crop, distinct planes and eye path must be deliberate. Derive headline placement from the image.
+
+Image inputs:
+No supplied source photograph. Create original concept artwork; do not imply actual documentary evidence.
+
+Composition choice:
+{"route": "mountain-scale", "why_this_image": "A clear peak silhouette on the right and a shadowed foreground on the left offer separate image and headline centers.", "rejected_route": "headline stretched across the summit", "why_rejected": "It would obscure the defining ridge and compete with the mountain silhouette."}
+
+Concrete camera, subject, planes and eye path:
+{"subject": "An original imagined high mountain range at first light, angular snow-capped summit on the right, no claim to depict any named peak.", "camera": "Distant telephoto landscape, layered compressed ridges, full vertical sense without a fake fisheye mountain.", "subject_scale": "Main peak on right-middle occupies roughly half image height; upper 25% provides calm deep-blue sky.", "foreground": "Dark slate-blue rock ridge on lower left with crisp texture, left negative field for title.", "middle_ground": "One dominant right-hand snow summit touched by pale gold morning light; important ridge remains fully visible.", "background": "Two softer blue mountain layers behind, clear restrained sky with no giant moon or decorative stars.", "eye_path": "White masthead -> gold-lit peak on right -> descending ridge -> restrained title on left shadow.", "light": "First sunlight catches only upper snow and rock, cold blue shadows retain detail.", "palette": "Slate blue, ice white, tiny warm gold highlights; warm ivory title and continuous muted gold outer frame.", "texture": "Photorealistic snow/rock structure and fine atmospheric separation, documentary-style tonal restraint."}
+
+Frame (width ratio relative to full cover width): {"width_ratio": 0.028, "color": "#efc52e", "treatment": "Continuous even flat golden-yellow frame, no bevel or shadow"}
+
+Preserve anchors: This is an original imaginary editorial concept, not a named real location or an archival photograph; Only the scene and exact text specified for this example
+
+EXACT text with normalized zones [x,y,w,h] measured from top-left of whole cover:
+
+{"role": "masthead", "content": "行见", "lines": ["行见"], "box": [0.14, 0.055, 0.72, 0.18], "font_character": "Large distinctive Chinese Song/Mincho serif, confident broad strokes, fine stroke contrast, optically spaced; original masthead occupies roughly two thirds of width.", "contrast_plan": "White masthead against quiet deep blue upper sky.", "occlusion": {"enabled": false}}
+
+{"role": "headline", "content": "山的名字", "lines": ["山的", "名字"], "box": [0.1, 0.58, 0.4, 0.26], "font_character": "Strong ivory Song serif, two lines offset along the shadow ridge, clear full Chinese characters.", "contrast_plan": "Keep whole title in uniform deep-blue foreground shadow; avoid the snowy summit.", "occlusion": {"enabled": false}}
+
+Allowed changes: Compose the new original scene and adjust crop/light to achieve the specified cover; Optically refine text within its designated zone while retaining exact characters
+
+Do not add/change: Recognizable famous landmarks or named real buildings; People, vehicles, flags or animals unless explicitly requested; Extra text, fake captions, barcodes, dates, numbers, logos; Detached rectangular title panels or decorative geometric mountains
+
+Visual acceptance checks: One immediate visual focus at 200px wide; Exact Chinese characters and intended line order; Source image retains tangible photographic depth/material; Masthead and headline have different functions and strong local contrast; No accidental collision of text and important subject features
+
+Avoid: Flat geometric placeholders as photographic art direction; Detached title cards as the default cover; Copying sample masthead, green panel, mountain polygons or title positions; Automatic decorative English, fake barcode or issue number; Arbitrary polygons presented as extracted photographic contours; Plastic HDR texture, uniform oversharpening, unrelated cinematic props
+
+Render ONLY the listed text strings. No extra copy, watermark or official National Geographic masthead/logo. Correct Chinese spelling and recognizable glyphs outrank occlusion.

@@ -1,0 +1,1 @@
+-r skills/photo-story-magazine/scripts/requirements.txt

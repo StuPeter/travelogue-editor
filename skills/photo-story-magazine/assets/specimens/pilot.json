@@ -1,0 +1,287 @@
+{
+  "schema_version": 1,
+  "title": "行见 / 封面与代表跨页视觉校准",
+  "author": "照片故事杂志 Skill",
+  "page_mm": [
+    190,
+    254
+  ],
+  "pages": [
+    {
+      "id": "cover",
+      "name": "封面 / T01 分层字场",
+      "leaves": 1,
+      "background": "#f4efdf",
+      "elements": [
+        {
+          "type": "rect",
+          "x": 0,
+          "y": 0,
+          "w": 190,
+          "h": 254,
+          "fill": "#d9af38"
+        },
+        {
+          "type": "image",
+          "src": "landscape.png",
+          "x": 8,
+          "y": 8,
+          "w": 174,
+          "h": 238,
+          "fit": "cover",
+          "focal": [
+            0.6,
+            0.5
+          ]
+        },
+        {
+          "type": "text",
+          "text": "行见",
+          "x": 19,
+          "y": 18,
+          "w": 145,
+          "h": 25,
+          "role": "title",
+          "size": 40,
+          "leading": 45,
+          "color": "#203e35"
+        },
+        {
+          "type": "text",
+          "text": "FIELD JOURNAL",
+          "x": 20,
+          "y": 46,
+          "w": 140,
+          "h": 8,
+          "role": "latin",
+          "color": "#203e35"
+        },
+        {
+          "type": "text",
+          "text": "山水\n之间",
+          "x": 19,
+          "y": 133,
+          "w": 151,
+          "h": 75,
+          "role": "display",
+          "size": 64,
+          "leading": 71,
+          "color": "#fffdf5",
+          "over_image": true
+        },
+        {
+          "type": "polygon",
+          "points": [
+            [
+              8,
+              192
+            ],
+            [
+              66,
+              179
+            ],
+            [
+              115,
+              193
+            ],
+            [
+              182,
+              183
+            ],
+            [
+              182,
+              246
+            ],
+            [
+              8,
+              246
+            ]
+          ],
+          "fill": "#184b40"
+        },
+        {
+          "type": "text",
+          "text": "一条线，连接山地与生活",
+          "x": 19,
+          "y": 214,
+          "w": 145,
+          "h": 12,
+          "role": "label",
+          "color": "#ffffff",
+          "background": "#184b40"
+        },
+        {
+          "type": "text",
+          "text": "原创版式示范 / 非实景影像",
+          "x": 19,
+          "y": 233,
+          "w": 145,
+          "h": 7,
+          "role": "caption",
+          "color": "#ffffff",
+          "background": "#184b40"
+        }
+      ]
+    },
+    {
+      "id": "opening",
+      "name": "开篇 / T02 + C05 稳定字场",
+      "leaves": 2,
+      "background": "#f4efdf",
+      "navigation": {
+        "label": "行见 / 原创版式示范",
+        "color": "#203e35",
+        "background": "#f4efdf"
+      },
+      "elements": [
+        {
+          "type": "image",
+          "src": "landscape.png",
+          "x": 128,
+          "y": 0,
+          "w": 252,
+          "h": 254,
+          "focal": [
+            0.67,
+            0.48
+          ]
+        },
+        {
+          "type": "rect",
+          "x": 0,
+          "y": 0,
+          "w": 133,
+          "h": 254,
+          "fill": "#184b40"
+        },
+        {
+          "type": "text",
+          "text": "01 / LAND & LIFE",
+          "x": 14,
+          "y": 17,
+          "w": 105,
+          "h": 9,
+          "role": "latin",
+          "color": "#ead49b",
+          "background": "#184b40"
+        },
+        {
+          "type": "rect",
+          "x": 0,
+          "y": 28,
+          "w": 380,
+          "h": 87,
+          "fill": "#184b40"
+        },
+        {
+          "type": "text",
+          "text": "山水",
+          "x": 14,
+          "y": 34,
+          "w": 171,
+          "h": 80,
+          "role": "display",
+          "size": 200,
+          "leading": 212,
+          "color": "#ffffff",
+          "background": "#184b40"
+        },
+        {
+          "type": "text",
+          "text": "之间",
+          "x": 205,
+          "y": 34,
+          "w": 171,
+          "h": 80,
+          "role": "display",
+          "size": 200,
+          "leading": 212,
+          "color": "#ffffff",
+          "background": "#184b40"
+        },
+        {
+          "type": "line",
+          "points": [
+            [
+              14,
+              111
+            ],
+            [
+              114,
+              111
+            ]
+          ],
+          "stroke": "#cfb774",
+          "line_width": 1.2
+        },
+        {
+          "type": "text",
+          "text": "把风景放回关系之中",
+          "x": 14,
+          "y": 121,
+          "w": 100,
+          "h": 18,
+          "role": "title",
+          "size": 20,
+          "leading": 27,
+          "color": "#ffffff",
+          "background": "#184b40"
+        },
+        {
+          "type": "text",
+          "text": "山形先进入视野，随后才是坡地、道路与屋顶。开篇用一张主画面建立观看尺度，让文字在稳定色场中提出本期的问题。",
+          "x": 14,
+          "y": 151,
+          "w": 101,
+          "h": 46,
+          "role": "body",
+          "color": "#ffffff",
+          "background": "#184b40",
+          "size": 11,
+          "leading": 19
+        },
+        {
+          "type": "text",
+          "text": "本页示范：标题层级、主图比例、文字密度与阅读入口。\n图形为原创示意，不对应实际地点。",
+          "x": 14,
+          "y": 215,
+          "w": 104,
+          "h": 22,
+          "role": "caption",
+          "color": "#ffffff",
+          "background": "#184b40"
+        },
+        {
+          "type": "rect",
+          "x": 272,
+          "y": 190,
+          "w": 94,
+          "h": 42,
+          "fill": "#f4efdf"
+        },
+        {
+          "type": "text",
+          "text": "先让读者看见关系，再让知识进入现场。",
+          "x": 279,
+          "y": 198,
+          "w": 79,
+          "h": 25,
+          "role": "title",
+          "size": 17,
+          "leading": 24,
+          "color": "#203e35",
+          "background": "#f4efdf"
+        },
+        {
+          "type": "rect",
+          "x": 0,
+          "y": 239,
+          "w": 380,
+          "h": 15,
+          "fill": "#f4efdf"
+        }
+      ]
+    }
+  ],
+  "kind": "component-demo"
+}

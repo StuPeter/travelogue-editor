@@ -1,0 +1,159 @@
+{
+  "schema_version": 2,
+  "publication": "行见",
+  "mode": "photo-derivative",
+  "inputs": [
+    {
+      "id": "Image 1",
+      "role": "edit-target",
+      "source": "railway-field.jpg",
+      "description": "The user's actually supplied rice-field railway photograph; inspect it before editing. Example filename is not an attached image."
+    }
+  ],
+  "aspect_ratio": [
+    3,
+    4
+  ],
+  "frame": {
+    "width_ratio": 0.028,
+    "color": "#efc52e",
+    "treatment": "Continuous even flat golden-yellow frame, no bevel or shadow"
+  },
+  "factual_anchors": [
+    "Actual defining railway direction and curve",
+    "Actual rice fields and mountain silhouette",
+    "Original identity and known subjects of the target photograph"
+  ],
+  "allowed_changes": [
+    "Approved art-derived reframing and tonal separation",
+    "Integrated typography and controlled foreground rice layering"
+  ],
+  "forbidden_changes": [
+    "Famous landmarks, vehicles, recognizable people, temples or new named locations",
+    "Invented event or identity",
+    "Corrupted Chinese or pseudo-writing",
+    "Unrequested price, barcode, issue or official masthead"
+  ],
+  "review_checks": [
+    "One immediate visual focus at 200px wide",
+    "Exact Chinese characters and intended line order",
+    "Source image retains tangible photographic depth/material",
+    "Masthead and headline have different functions and strong local contrast",
+    "No accidental collision of text and important subject features"
+  ],
+  "topic": "田野之外",
+  "content_promise": "稻田、轨道与村镇的关系在内页得到解释；示范基于实际照片的受控艺术封面。",
+  "direction": {
+    "route": "journey-leading-line",
+    "why_this_image": "The actual curved railway leads from lower left into the horizon, while rice on the right offers a coherent title field.",
+    "rejected_route": "centered postcard with title on a separate panel",
+    "why_rejected": "It would hide the railway's curve and detach the topic from the scene."
+  },
+  "art_direction": {
+    "subject": "The supplied Dali field photograph, keeping its defining railway and geographical cues.",
+    "camera": "Reframe from the supplied image's actual viewpoint; no invented drone or reversed railway.",
+    "subject_scale": "Reduce excess sky toward upper third if crop permits; keep sufficient quiet blue for original masthead.",
+    "foreground": "Golden rice on lower right; a few real-looking rice tips overlap the lowest title edges.",
+    "middle_ground": "Railway enters from lower left, curves toward horizon and stays visible through the title composition.",
+    "background": "Preserve the actual mountain silhouette, existing distant settlement and daylight identity.",
+    "eye_path": "Masthead in sky -> railway from lower left -> field title on right -> mountain horizon.",
+    "light": "Natural daylight enhanced with controlled separation, no fabricated event.",
+    "palette": "Deep jade green, warm rice gold and mineral blue; warm ivory display lettering.",
+    "texture": "Photographic rice, soil and rail texture with credible daylight, no plastic HDR."
+  },
+  "text": [
+    {
+      "role": "masthead",
+      "content": "行见",
+      "lines": [
+        "行见"
+      ],
+      "box": [
+        0.14,
+        0.05,
+        0.72,
+        0.17
+      ],
+      "font_character": "Large white Song serif, independent original publication masthead.",
+      "contrast_plan": "Calm blue sky, avoid clouds behind fine strokes.",
+      "occlusion": {
+        "enabled": false
+      }
+    },
+    {
+      "role": "secondary",
+      "content": "FIELD JOURNAL",
+      "lines": [
+        "FIELD JOURNAL"
+      ],
+      "box": [
+        0.24,
+        0.23,
+        0.52,
+        0.035
+      ],
+      "font_character": "Small accurately spaced serif capitals.",
+      "contrast_plan": "Clear sky of sufficient dark/blue tone.",
+      "occlusion": {
+        "enabled": false
+      }
+    },
+    {
+      "role": "location",
+      "content": "大理 · DALI",
+      "lines": [
+        "大理 · DALI"
+      ],
+      "box": [
+        0.56,
+        0.44,
+        0.36,
+        0.04
+      ],
+      "font_character": "Small semantic location line, clear medium serif.",
+      "contrast_plan": "Place over a locally dark/green field area.",
+      "occlusion": {
+        "enabled": false
+      }
+    },
+    {
+      "role": "headline",
+      "content": "田野之外",
+      "lines": [
+        "田野",
+        "之外"
+      ],
+      "box": [
+        0.54,
+        0.5,
+        0.38,
+        0.29
+      ],
+      "font_character": "Very large warm ivory Chinese Song serif, confident strokes and full glyphs.",
+      "contrast_plan": "Right field dark enough across the entire characters; railway unobstructed.",
+      "occlusion": {
+        "enabled": true,
+        "foreground": "Only a few foreground rice tips across the lowest edges.",
+        "protected_features": "Keep all radicals, character interiors and line order readable."
+      }
+    },
+    {
+      "role": "secondary",
+      "content": "BEYOND THE FIELDS",
+      "lines": [
+        "BEYOND THE FIELDS"
+      ],
+      "box": [
+        0.5,
+        0.81,
+        0.43,
+        0.035
+      ],
+      "font_character": "Small semantic serif English subtitle, accurately spelled.",
+      "contrast_plan": "Dark continuous field area, not bright rice heads.",
+      "occlusion": {
+        "enabled": false
+      }
+    }
+  ]
+}

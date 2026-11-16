@@ -1,0 +1,52 @@
+Use case: original editorial photography magazine cover, ONE flat finished artwork, NOT a mockup.
+
+Output aspect ratio: 3:4.
+
+Original publication for THIS issue: 行见
+
+Topic: 田野之外
+Editorial promise: 稻田、轨道与村镇的关系在内页得到解释；示范基于实际照片的受控艺术封面。
+
+Production mode: photo-derivative
+
+Art-direction baseline:
+Immersive editorial photography or explicitly identified photorealistic concept artwork; tactile detail, credible light and spatial depth.
+A designed original masthead, a distinct short topic headline and one primary visual focus. The publication name belongs to THIS issue, never inherited from a sample.
+For Chinese geography/culture begin by testing substantial Song/Mincho serif display lettering, deliberate stroke contrast and optical spacing. A subject-led bold sans is allowed. Interior font roles do not automatically define the cover.
+Image shapes, title and genuine foreground form a deliberate relationship. Occlusion is optional, supported by a real/illustrated contour, and keeps all characters recognizable.
+Subject scale, crop, distinct planes and eye path must be deliberate. Derive headline placement from the image.
+
+Image inputs:
+Image 1: edit-target; The user's actually supplied rice-field railway photograph; inspect it before editing. Example filename is not an attached image.
+
+Composition choice:
+{"route": "journey-leading-line", "why_this_image": "The actual curved railway leads from lower left into the horizon, while rice on the right offers a coherent title field.", "rejected_route": "centered postcard with title on a separate panel", "why_rejected": "It would hide the railway's curve and detach the topic from the scene."}
+
+Concrete camera, subject, planes and eye path:
+{"subject": "The supplied Dali field photograph, keeping its defining railway and geographical cues.", "camera": "Reframe from the supplied image's actual viewpoint; no invented drone or reversed railway.", "subject_scale": "Reduce excess sky toward upper third if crop permits; keep sufficient quiet blue for original masthead.", "foreground": "Golden rice on lower right; a few real-looking rice tips overlap the lowest title edges.", "middle_ground": "Railway enters from lower left, curves toward horizon and stays visible through the title composition.", "background": "Preserve the actual mountain silhouette, existing distant settlement and daylight identity.", "eye_path": "Masthead in sky -> railway from lower left -> field title on right -> mountain horizon.", "light": "Natural daylight enhanced with controlled separation, no fabricated event.", "palette": "Deep jade green, warm rice gold and mineral blue; warm ivory display lettering.", "texture": "Photographic rice, soil and rail texture with credible daylight, no plastic HDR."}
+
+Frame (width ratio relative to full cover width): {"width_ratio": 0.028, "color": "#efc52e", "treatment": "Continuous even flat golden-yellow frame, no bevel or shadow"}
+
+Preserve anchors: Actual defining railway direction and curve; Actual rice fields and mountain silhouette; Original identity and known subjects of the target photograph
+
+EXACT text with normalized zones [x,y,w,h] measured from top-left of whole cover:
+
+{"role": "masthead", "content": "行见", "lines": ["行见"], "box": [0.14, 0.05, 0.72, 0.17], "font_character": "Large white Song serif, independent original publication masthead.", "contrast_plan": "Calm blue sky, avoid clouds behind fine strokes.", "occlusion": {"enabled": false}}
+
+{"role": "secondary", "content": "FIELD JOURNAL", "lines": ["FIELD JOURNAL"], "box": [0.24, 0.23, 0.52, 0.035], "font_character": "Small accurately spaced serif capitals.", "contrast_plan": "Clear sky of sufficient dark/blue tone.", "occlusion": {"enabled": false}}
+
+{"role": "location", "content": "大理 · DALI", "lines": ["大理 · DALI"], "box": [0.56, 0.44, 0.36, 0.04], "font_character": "Small semantic location line, clear medium serif.", "contrast_plan": "Place over a locally dark/green field area.", "occlusion": {"enabled": false}}
+
+{"role": "headline", "content": "田野之外", "lines": ["田野", "之外"], "box": [0.54, 0.5, 0.38, 0.29], "font_character": "Very large warm ivory Chinese Song serif, confident strokes and full glyphs.", "contrast_plan": "Right field dark enough across the entire characters; railway unobstructed.", "occlusion": {"enabled": true, "foreground": "Only a few foreground rice tips across the lowest edges.", "protected_features": "Keep all radicals, character interiors and line order readable."}}
+
+{"role": "secondary", "content": "BEYOND THE FIELDS", "lines": ["BEYOND THE FIELDS"], "box": [0.5, 0.81, 0.43, 0.035], "font_character": "Small semantic serif English subtitle, accurately spelled.", "contrast_plan": "Dark continuous field area, not bright rice heads.", "occlusion": {"enabled": false}}
+
+Allowed changes: Approved art-derived reframing and tonal separation; Integrated typography and controlled foreground rice layering
+
+Do not add/change: Famous landmarks, vehicles, recognizable people, temples or new named locations; Invented event or identity; Corrupted Chinese or pseudo-writing; Unrequested price, barcode, issue or official masthead
+
+Visual acceptance checks: One immediate visual focus at 200px wide; Exact Chinese characters and intended line order; Source image retains tangible photographic depth/material; Masthead and headline have different functions and strong local contrast; No accidental collision of text and important subject features
+
+Avoid: Flat geometric placeholders as photographic art direction; Detached title cards as the default cover; Copying sample masthead, green panel, mountain polygons or title positions; Automatic decorative English, fake barcode or issue number; Arbitrary polygons presented as extracted photographic contours; Plastic HDR texture, uniform oversharpening, unrelated cinematic props
+
+Render ONLY the listed text strings. No extra copy, watermark or official National Geographic masthead/logo. Correct Chinese spelling and recognizable glyphs outrank occlusion.

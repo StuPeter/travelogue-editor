@@ -1,0 +1,46 @@
+Use case: original editorial photography magazine cover, ONE flat finished artwork, NOT a mockup.
+
+Output aspect ratio: 3:4.
+
+Original publication for THIS issue: 行见
+
+Topic: 岩石的纹理
+Editorial promise: 把目光集中到岩石层理和表面的变化，示范单一物件与摄影微距。
+
+Production mode: original-illustration
+
+Art-direction baseline:
+Immersive editorial photography or explicitly identified photorealistic concept artwork; tactile detail, credible light and spatial depth.
+A designed original masthead, a distinct short topic headline and one primary visual focus. The publication name belongs to THIS issue, never inherited from a sample.
+For Chinese geography/culture begin by testing substantial Song/Mincho serif display lettering, deliberate stroke contrast and optical spacing. A subject-led bold sans is allowed. Interior font roles do not automatically define the cover.
+Image shapes, title and genuine foreground form a deliberate relationship. Occlusion is optional, supported by a real/illustrated contour, and keeps all characters recognizable.
+Subject scale, crop, distinct planes and eye path must be deliberate. Derive headline placement from the image.
+
+Image inputs:
+No supplied source photograph. Create original concept artwork; do not imply actual documentary evidence.
+
+Composition choice:
+{"route": "material-macro", "why_this_image": "One rounded dark stone and its naturally exposed layered face supply form, texture and a readable contour.", "rejected_route": "wide landscape with many small stones", "why_rejected": "At thumbnail size neither the tactile subject nor the editorial focus would survive."}
+
+Concrete camera, subject, planes and eye path:
+{"subject": "A single dark slate-like river-worn stone with a revealed striated edge on a pale mineral surface, original conceptual still-life photography, no fossil or artifact claims.", "camera": "Close macro still-life, low three-quarter viewpoint, 85mm equivalent, physically credible depth of field; main face in focus.", "subject_scale": "One stone occupies central/lower 65% of image width; naturally pale upper surface leaves masthead space.", "foreground": "Pale fine-grained mineral surface entering bottom edge with modest scattered grains only.", "middle_ground": "Dark rounded stone dominates from center left to right, cut edge showing delicate lamination and tiny light-catching chips.", "background": "Quiet pale grey mineral surface extending upward, natural continuous photographic background, not a graphic paper card.", "eye_path": "Dark masthead at top -> raking highlight along rock edge -> large ivory title across lower dark stone face.", "light": "One soft low grazing side light, rich but open shadow, subtle reflected fill.", "palette": "Charcoal slate, warm limestone grey, ivory lettering, muted gold frame; minimal saturation.", "texture": "Extremely tangible photographic mineral grain and lamination, sharp without artificial crunch, no painted or plastic surface."}
+
+Frame (width ratio relative to full cover width): {"width_ratio": 0.028, "color": "#efc52e", "treatment": "Continuous even flat golden-yellow frame, no bevel or shadow"}
+
+Preserve anchors: This is an original imaginary editorial concept, not a named real location or an archival photograph; Only the scene and exact text specified for this example
+
+EXACT text with normalized zones [x,y,w,h] measured from top-left of whole cover:
+
+{"role": "masthead", "content": "行见", "lines": ["行见"], "box": [0.14, 0.055, 0.72, 0.18], "font_character": "Large distinctive Chinese Song/Mincho serif, confident broad strokes, fine stroke contrast, optically spaced; original masthead occupies roughly two thirds of width.", "contrast_plan": "Deep charcoal masthead on calm light-grey mineral surface.", "occlusion": {"enabled": false}}
+
+{"role": "headline", "content": "石上时间", "lines": ["石上时间"], "box": [0.12, 0.68, 0.76, 0.15], "font_character": "One wide line of strong ivory Chinese Song serif; retain full glyph widths, fewer words with very large scale.", "contrast_plan": "Reserve the lower continuous dark stone face beneath every character, including the thinnest strokes.", "occlusion": {"enabled": false}}
+
+Allowed changes: Compose the new original scene and adjust crop/light to achieve the specified cover; Optically refine text within its designated zone while retaining exact characters
+
+Do not add/change: Recognizable famous landmarks or named real buildings; People, vehicles, flags or animals unless explicitly requested; Extra text, fake captions, barcodes, dates, numbers, logos; Detached rectangular title panels or decorative geometric mountains
+
+Visual acceptance checks: One immediate visual focus at 200px wide; Exact Chinese characters and intended line order; Source image retains tangible photographic depth/material; Masthead and headline have different functions and strong local contrast; No accidental collision of text and important subject features
+
+Avoid: Flat geometric placeholders as photographic art direction; Detached title cards as the default cover; Copying sample masthead, green panel, mountain polygons or title positions; Automatic decorative English, fake barcode or issue number; Arbitrary polygons presented as extracted photographic contours; Plastic HDR texture, uniform oversharpening, unrelated cinematic props
+
+Render ONLY the listed text strings. No extra copy, watermark or official National Geographic masthead/logo. Correct Chinese spelling and recognizable glyphs outrank occlusion.

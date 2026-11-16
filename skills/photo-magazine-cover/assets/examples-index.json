@@ -1,0 +1,49 @@
+{
+  "tool": "built-in image_gen",
+  "examples": [
+    {
+      "id": "river-journey",
+      "image": "examples/river-journey.png",
+      "recipe": "examples/river-journey.json",
+      "prompt": "examples/river-journey.prompt.txt",
+      "width": 1086,
+      "height": 1448,
+      "sha256": "e71880779d6f9d15b333e14e2d7b42edf3ecbcbda2b734ff786ccb402479e4c4",
+      "provenance": "Original AI-generated photorealistic concept artwork; no user photograph or named real site",
+      "review": "Exact masthead/headline checked; focal point, local readability, continuous frame and material depth visually inspected. Geometry zones are art-direction targets, not pixel-exact output guarantees."
+    },
+    {
+      "id": "architecture-close",
+      "image": "examples/architecture-close.png",
+      "recipe": "examples/architecture-close.json",
+      "prompt": "examples/architecture-close.prompt.txt",
+      "width": 1086,
+      "height": 1448,
+      "sha256": "d2d06eeaebd973a3013602a04bf3545bbef508ad64585e095908c696eee008c6",
+      "provenance": "Original AI-generated photorealistic concept artwork; no user photograph or named real site",
+      "review": "Exact masthead/headline checked; focal point, local readability, continuous frame and material depth visually inspected. Geometry zones are art-direction targets, not pixel-exact output guarantees."
+    },
+    {
+      "id": "stone-macro",
+      "image": "examples/stone-macro.png",
+      "recipe": "examples/stone-macro.json",
+      "prompt": "examples/stone-macro.prompt.txt",
+      "width": 1086,
+      "height": 1448,
+      "sha256": "745d4329a55199207096f54f91f1968511925ec09c8098099bec0efc934262eb",
+      "provenance": "Original AI-generated photorealistic concept artwork; no user photograph or named real site",
+      "review": "Exact masthead/headline checked; focal point, local readability, continuous frame and material depth visually inspected. Geometry zones are art-direction targets, not pixel-exact output guarantees."
+    },
+    {
+      "id": "mountain-depth",
+      "image": "examples/mountain-depth.png",
+      "recipe": "examples/mountain-depth.json",
+      "prompt": "examples/mountain-depth.prompt.txt",
+      "width": 1086,
+      "height": 1448,
+      "sha256": "23fc23ff5064ca649aa32c4191dced9a6d30c31c64e1cd0dccc09dbafc7e5099",
+      "provenance": "Original AI-generated photorealistic concept artwork; no user photograph or named real site",
+      "review": "Exact masthead/headline checked; focal point, local readability, continuous frame and material depth visually inspected. Geometry zones are art-direction targets, not pixel-exact output guarantees."
+    }
+  ]
+}
