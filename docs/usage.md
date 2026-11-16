@@ -63,3 +63,14 @@ python skills/photo-magazine-cover/scripts/build_cover_prompt.py --recipe skills
 ```
 
 这条命令只生成提示词。助手还要调用实际可用的图片工具或进行可编辑排字，并检查最终图像的中文、主体、局部对比和层次。不要把示例中的刊名与地点当作本期输入。
+
+## 上传平台的轻量包
+
+若平台限制压缩包不超过10 MB，可在本仓库运行：
+
+```sh
+python -m pip install -r requirements.txt
+python scripts/build_platform_package.py --out dist/platform/travelogue-editor-platform-lite.zip
+```
+
+轻量包将 `SKILL.md` 放在 ZIP 根目录，包含完整主 Skill、嵌套封面指导、四张原尺寸压缩参考图与排版程序。字体许可证与哈希随包保留；首次运行字体准备程序时会下载固定版本的约48 MB原始发布包，校验后缓存三份字体，后续使用缓存。运行环境需要能访问 GitHub；离线环境可自行放入与字体配置哈希一致的文件。图像生成能力仍由所用平台提供。
