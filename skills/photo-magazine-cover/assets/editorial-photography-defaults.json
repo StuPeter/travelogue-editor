@@ -14,5 +14,6 @@
     "Automatic decorative English, fake barcode or issue number",
     "Arbitrary polygons presented as extracted photographic contours",
     "Plastic HDR texture, uniform oversharpening, unrelated cinematic props"
-  ]
+  ],
+  "default_production": "AI cover artwork derived from the actually viewed user photographs and issue concept; preserve factual anchors, record artistic changes, generate actual artwork then verify text. Respect explicit photo-only instructions, authorization and tool limits."
 }

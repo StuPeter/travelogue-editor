@@ -2,12 +2,12 @@
   "name": "travelogue-editor",
   "display_name": "旅图编辑",
   "english_name": "Travelogue Editor",
-  "version": "2.1.0",
+  "version": "2.4.0",
   "author": "StuPeter",
   "license": "MIT",
   "repository": "https://github.com/StuPeter/travelogue-editor",
   "skills": {
-    "photo-story-magazine": "2.1.0",
-    "photo-magazine-cover": "1.4.0"
+    "photo-story-magazine": "2.4.0",
+    "photo-magazine-cover": "1.6.0"
   }
 }
