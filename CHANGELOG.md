@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.5.0 — 2026-11-21
+
+- Protect important subject regions when cropping photographs and report source area lost.
+- Add optional source and crop proofs and document review of masks, bleed and gutters.
+
 ## 2.4.0 — 2026-11-17
 
 - Preserve rich thematic colors, varied composition and photo-informed AI cover defaults.

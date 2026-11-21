@@ -74,3 +74,12 @@ python scripts/create_demo.py --assets work/demo-assets --fonts work/fonts/font-
 ```
 
 该命令重建标记为component-demo的原创输入图、教学样册plan与pilot，并在内部显式启用演示模式。它用于技术自检；正式摄影封面先打开封面Skill的成品示例、选择本期构图后另建plan。项目特有数据在JSON内；运行时没有单期硬编码。行为回归用scripts/test_toolkit.py，真实照片的私有试排不进入发行包。
+
+
+## 照片裁切
+
+审片记录 EXIF 转正后的宽高比与必须保留的范围，例如塔尖、完整人物或合影。横图可裁竖、竖图可入跨页，先评估画框和主题是否匹配。关键照片设 `keep_region: [left, top, right, bottom]`，坐标相对于转正后的原图，范围 0 到 1。程序在铺满画框的前提下尽量靠近 focal 并保留该区域。无法同时满足时调整画框、改用 contain 保留完整图片或换图。全程等比缩放。
+
+运行排版时加 `--crop-previews`，在 crop-previews 目录查看原图、裁切框和裁切结果。layout-report.json 的 images 记录每张图的 source_crop、source_area_lost 与 crop_review。裁掉超过 40% 的矩形原图面积时提示人工复核，该阈值用于筛选风险。主体靠边即使损失较小也要检查。
+
+必须保留区域的自动检查与面积统计针对矩形画框。异形窗口、出血、中缝和其他图层遮挡需结合最终 PDF 检查，矩形对照图用于辅助定位。优先调裁切位置和框比，其次调整组图或使用完整图。改版后重看最终页面再交付。

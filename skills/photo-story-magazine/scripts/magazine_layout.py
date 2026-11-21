@@ -9,7 +9,7 @@ import subprocess
 import tempfile
 from pathlib import Path
 from xml.sax.saxutils import escape
-from PIL import Image, ImageOps
+from PIL import Image, ImageDraw, ImageOps
 from fontTools.ttLib import TTFont as FontFile
 from pypdf import PdfReader, PdfWriter, Transformation
 from reportlab.pdfgen import canvas
@@ -35,25 +35,65 @@ def contrast(fg, bg):
     return (b + .05) / (a + .05)
 
 
-def crop_geometry(iw, ih, box, focal=(.5, .5), fit="cover"):
+def crop_geometry(iw, ih, box, focal=(.5, .5), fit="cover", keep_region=None):
     """Focal = normalized point in oriented source, placed near box center and clamped."""
     x, y, w, h = box
     if min(iw, ih, w, h) <= 0 or fit not in ("cover", "contain"):
         raise LayoutError("Invalid image dimensions or fit mode")
     if len(focal) != 2 or not all(0 <= v <= 1 for v in focal):
         raise LayoutError("focal must contain two values in [0, 1]")
+    if keep_region is not None:
+        if (not isinstance(keep_region, (list, tuple)) or len(keep_region) != 4
+                or not all(isinstance(v, (int, float)) and 0 <= v <= 1 for v in keep_region)
+                or not (keep_region[0] < keep_region[2] and keep_region[1] < keep_region[3])):
+            raise LayoutError("keep_region must be [left, top, right, bottom] in normalized source coordinates")
     scale = (max if fit == "cover" else min)(w / iw, h / ih)
     dw, dh = iw * scale, ih * scale
     if fit == "cover":
         left = x + min(0, max(w - dw, w / 2 - dw * focal[0]))
         top = y + min(0, max(h - dh, h / 2 - dh * focal[1]))
+        if keep_region is not None:
+            x0, y0, x1, y1 = keep_region
+
+            def protect(offset, start, size, drawn, first, last):
+                lower = max(size - drawn, -first * drawn)
+                # The protected right edge must stay inside the frame.
+                upper = min(0, size - last * drawn)
+                if lower > upper + 1e-9:
+                    raise LayoutError("Crop cannot preserve keep_region. Resize the frame, use contain or change the photo.")
+                return start + min(upper, max(lower, offset - start))
+
+            left = protect(left, x, w, dw, x0, x1)
+            top = protect(top, y, h, dh, y0, y1)
     else:
         left, top = x + (w - dw) / 2, y + (h - dh) / 2
     return left, top, dw, dh
 
 
+def crop_preview(image, crop, keep_region, path):
+    """Show the oriented source and its rectangular visible crop side by side."""
+    source = image.convert("RGB")
+    rounding = (math.floor, math.floor, math.ceil, math.ceil)
+    cropped = source.crop(tuple(fn(v * dim) for fn, v, dim in zip(rounding, crop, source.size * 2)))
+    source.thumbnail((360, 250))
+    cropped.thumbnail((360, 250))
+    draw = ImageDraw.Draw(source)
+    for bounds, color in [(crop, "#ffb000"), (keep_region, "#29e1ff")]:
+        if bounds is not None:
+            draw.rectangle(tuple(round(v * (dim-1)) for v, dim in zip(bounds, source.size * 2)),
+                           outline=color, width=2)
+    sheet = Image.new("RGB", (752, 285), "#232323")
+    sheet.paste(source, (8, 26))
+    sheet.paste(cropped, (384, 26))
+    draw = ImageDraw.Draw(sheet)
+    draw.text((8, 7), "Source / yellow: crop / cyan: protected", fill="white")
+    draw.text((384, 7), "Rectangular crop", fill="white")
+    sheet.save(path)
+
+
 class Renderer:
-    def __init__(self, font_manifest, asset_root):
+    def __init__(self, font_manifest, asset_root, crop_previews=None):
+        self.crop_previews = crop_previews
         path = Path(font_manifest).resolve()
         self.fonts = json.loads(path.read_text(encoding="utf-8"))
         self.roles = self.fonts["roles"]
@@ -144,7 +184,22 @@ class Renderer:
                     image.load()
                     iw, ih = image.size
                     left, top, dw, dh = crop_geometry(iw, ih, (x, y, w, h),
-                                                     e.get("focal", (.5, .5)), e.get("fit", "cover"))
+                                                     e.get("focal", (.5, .5)), e.get("fit", "cover"),
+                                                     e.get("keep_region"))
+                    crop = [max(0, (x-left)/dw), max(0, (y-top)/dh),
+                            min(1, (x+w-left)/dw), min(1, (y+h-top)/dh)]
+                    retained = (crop[2]-crop[0]) * (crop[3]-crop[1])
+                    review = []
+                    if retained < .6:
+                        review.append("Cover crop removes more than 40% of source area")
+                    if e.get("clip") or e.get("allow_bleed"):
+                        review.append("Check polygon or bleed separately from rectangular crop")
+                    if self.width > self.leaf_width and x < self.leaf_width < x+w:
+                        review.append("Check important subjects at the spread gutter")
+                    proof = None
+                    if self.crop_previews is not None:
+                        proof = f"crop-{len(self.report['images'])+1:03d}.png"
+                        crop_preview(image, crop, e.get("keep_region"), self.crop_previews / proof)
                     if e.get("clip"):
                         points = [(x + px * w, y + py * h) for px, py in e["clip"]]
                         c.clipPath(self.path(points, True), fill=0, stroke=0)
@@ -156,7 +211,11 @@ class Renderer:
                                 dw*mm, dh*mm, mask="auto")
                 self.report["images"].append({"page": self.page_id, "src": e["src"],
                                                "oriented_pixels": [iw, ih], "focal": e.get("focal", [.5, .5]),
-                                               "draw_box_mm": [left, top, dw, dh]})
+                                               "draw_box_mm": [left, top, dw, dh],
+                                               "frame_mm": [x, y, w, h],
+                                               "fit": e.get("fit", "cover"), "keep_region": e.get("keep_region"),
+                                               "source_crop": crop, "source_area_lost": round(1-retained, 4),
+                                               "crop_review": review, "crop_preview": proof})
             elif kind == "quote":
                 # Offset filled field plus an open-corner border; child text stays editable.
                 self.draw({**e, "type": "rect"})
@@ -187,6 +246,7 @@ class Renderer:
             if leaves not in (1, 2):
                 raise LayoutError("leaves must be 1 (single) or 2 (spread)")
             self.width = leaf_width * leaves
+            self.leaf_width = leaf_width
             self.page_id = page.get("id", str(i + 1))
             self.c.setPageSize((self.width * mm, self.height * mm))
             self.draw({"type": "rect", "x": 0, "y": 0, "w": self.width, "h": self.height,
@@ -231,7 +291,7 @@ def split_spreads(source, target, plan):
         writer.write(stream)
 
 
-def render_plan(plan_path, font_manifest, out, preview=False, dpi=90, asset_root=None, allow_demo=False):
+def render_plan(plan_path, font_manifest, out, preview=False, dpi=90, asset_root=None, allow_demo=False, crop_previews=False):
     plan_path, out = Path(plan_path).resolve(), Path(out).resolve()
     plan = json.loads(plan_path.read_text(encoding="utf-8-sig"))
     if plan.get("schema_version") != 1 or not plan.get("pages"):
@@ -242,10 +302,15 @@ def render_plan(plan_path, font_manifest, out, preview=False, dpi=90, asset_root
     names = ["magazine-spreads.pdf", "magazine.pdf", "layout-report.json"]
     if any((out / name).exists() for name in names):
         raise LayoutError("Use a new output directory; existing editions are not overwritten")
-    renderer = Renderer(font_manifest, asset_root or plan_path.parent)
+    if crop_previews and (out / "crop-previews").exists():
+        raise LayoutError("Use a new output directory for crop previews")
     # Reject overflow, missing glyphs and known low contrast before publishing any PDF.
     with tempfile.TemporaryDirectory(prefix="fieldkit-") as temp:
         temp = Path(temp)
+        proof_dir = temp / "crop-previews" if crop_previews else None
+        if proof_dir is not None:
+            proof_dir.mkdir()
+        renderer = Renderer(font_manifest, asset_root or plan_path.parent, proof_dir)
         renderer.render(plan, temp/names[0])
         split_spreads(temp/names[0], temp/names[1], plan)
         renderer.report.update({"title": plan["title"], "page_mm": plan.get("page_mm", [190, 254]),
@@ -256,6 +321,8 @@ def render_plan(plan_path, font_manifest, out, preview=False, dpi=90, asset_root
         (temp/names[2]).write_text(json.dumps(renderer.report, ensure_ascii=False, indent=2), encoding="utf-8")
         for name in names:
             shutil.copy2(temp/name, out/name)
+        if proof_dir is not None:
+            shutil.copytree(proof_dir, out / proof_dir.name)
     if preview:
         if not shutil.which("pdftoppm"):
             raise LayoutError("PDFs saved; install Poppler/pdftoppm to render visual previews")
@@ -269,11 +336,12 @@ if __name__ == "__main__":
     parser.add_argument("--fonts", type=Path, required=True, help="Prepared font-manifest.json")
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--asset-root", type=Path)
+    parser.add_argument("--crop-previews", action="store_true")
     parser.add_argument("--preview", action="store_true")
     parser.add_argument("--dpi", type=int, default=90)
     parser.add_argument("--demo", action="store_true", help="Explicitly run a component teaching plan")
     args = parser.parse_args()
     try:
-        print(render_plan(args.plan, args.fonts, args.out, args.preview, args.dpi, args.asset_root, args.demo))
+        print(render_plan(args.plan, args.fonts, args.out, args.preview, args.dpi, args.asset_root, args.demo, args.crop_previews))
     except (LayoutError, KeyError, ValueError) as exc:
         parser.exit(2, f"Layout rejected: {exc}\n")

@@ -32,6 +32,15 @@ class ToolkitTests(unittest.TestCase):
         return dict(type="text",text="正文测试与数字 2026",x=10,y=10,w=100,h=30,
                     role="body",color="#102a20",background="#ffffff",**kw)
 
+    def test_protected_crop(self):
+        box = (0, 0, 100, 100)
+        self.assertEqual(crop_geometry(300, 100, box, keep_region=[0, 0, .2, 1]),
+                         (0, 0, 300, 100))
+        self.assertEqual(crop_geometry(100, 300, box, keep_region=[0, .8, 1, 1]),
+                         (0, -200, 100, 300))
+        with self.assertRaisesRegex(LayoutError, "cannot preserve"):
+            crop_geometry(300, 100, box, keep_region=[0, 0, .5, 1])
+
     def test_focal_crop_and_aspect(self):
         box = [0,0,100,100]
         left,top,w,h = crop_geometry(300,100,box,[1,.5])
@@ -118,9 +127,13 @@ class ToolkitTests(unittest.TestCase):
         Image.new("RGBA",(10,10),(10,90,50,128)).save(alpha)
         elements=[dict(type="image",src=str(source),x=10,y=10,w=60,h=120),
                   dict(type="image",src=str(alpha),x=10,y=10,w=60,h=120,fit="contain")]
-        out=render_plan(self.plan(elements),FONT_MANIFEST,self.root/"exif")
+        out=render_plan(self.plan(elements),FONT_MANIFEST,self.root/"exif",crop_previews=True)
         report=json.loads((out/"layout-report.json").read_text(encoding="utf-8"))
         self.assertEqual(report["images"][0]["oriented_pixels"],[40,90])
+        self.assertAlmostEqual(report["images"][0]["source_area_lost"], .1111)
+        self.assertEqual(report["images"][1]["source_area_lost"], 0)
+        with Image.open(out/"crop-previews"/report["images"][0]["crop_preview"]) as proof:
+            proof.verify()
         images=PdfReader(out/"magazine-spreads.pdf").pages[0]["/Resources"]["/XObject"]
         self.assertTrue(any("/SMask" in ref.get_object() for ref in images.values()))
 
